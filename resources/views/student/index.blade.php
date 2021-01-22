@@ -36,25 +36,6 @@
           </thead>
           <tbody id="show_student">
 
-{{--              <tr>--}}
-{{--                <th scope="row">1</th>--}}
-{{--                <td>Arijit Banarjee</td>--}}
-{{--                <td>arijit889@gmail.com</td>--}}
-{{--                <td>+8801733163337</td>--}}
-{{--                <td>ari889</td>--}}
-{{--                <td><img src="{{asset('images/image.jpg')}}" alt="" style="width: 50px;height: 50px;"></td>--}}
-{{--                <td>25</td>--}}
-{{--                <td>321</td>--}}
-{{--                <td class="text-right">--}}
-{{--                    <div class="btn-group">--}}
-{{--                        <a href="#" class="btn btn-info rounded-0">View</a>--}}
-{{--                        <a href="#" class="btn btn-warning rounded-0">Edit</a>--}}
-{{--                        <a href="#" class="btn btn-danger rounded-0">Delete</a>--}}
-{{--                    </div>--}}
-{{--                </td>--}}
-{{--              </tr>--}}
-
-
           </tbody>
         </table>
       </div>
@@ -128,6 +109,24 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="student_show_modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <img src="{{asset('images/image.jpg')}}" alt="" class="rounded-circle mx-auto d-block shadow mb-3" style="width: 150px;height: 150px;border: 5px solid #fff;">
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>Name:</strong> Arijit Banarjee</li>
+                        <li class="list-group-item"><strong>Email:</strong> arijitbanarjee889@gmail.com</li>
+                        <li class="list-group-item"><strong>Cell:</strong> +8801733163337</li>
+                        <li class="list-group-item"><strong>Username:</strong> ari889</li>
+                        <li class="list-group-item"><strong>Age:</strong> 25</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<script type="text/javascript" src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>

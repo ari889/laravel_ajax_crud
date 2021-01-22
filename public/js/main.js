@@ -33,6 +33,8 @@
                     success : function(data){
                         $('#student_add_form')[0].reset();
                         message('Student added successful', '.student_add_message', 'success');
+                        getStudent();
+                        $('#student_add_modal').modal('hide');
                     }
                 });
             }
@@ -40,14 +42,22 @@
         });
 
 
+        /**
+         * get all student data
+         */
+        getStudent();
         function getStudent(){
             $.ajax({
                 url: 'student/show',
-                success: function(){
-
+                success: function(data){
+                    $('#show_student').html(data);
                 }
             });
         }
+
+        /**
+         * view single student data
+         */
 
 
     });
