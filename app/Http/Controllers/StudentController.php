@@ -54,12 +54,77 @@ class StudentController extends Controller
                 <td>'.$student -> created_at -> diffForHumans().'</td>
                 <td class="text-right">
                     <div class="btn-group">
-                        <a href="#" class="btn btn-info rounded-0" id="view_student" data-student_id="'.$student -> id.'" data-toggle="modal" data-target="#student_show_modal">View</a>
-                        <a href="#" class="btn btn-warning rounded-0">Edit</a>
-                        <a href="#" class="btn btn-danger rounded-0">Delete</a>
+                        <a href="#" class="btn btn-info rounded-0" id="view_student" data-student_id="'.$student -> id.'">View</a>
+                        <a href="#" class="btn btn-warning rounded-0" id="edit_student" data-student_id="'.$student -> id.'">Edit</a>
+                        <a href="#" class="btn btn-danger rounded-0" id="delete_student" data-student_id="'.$student -> id.'">Delete</a>
                     </div>
                 </td>
               </tr>';
+        }
+    }
+
+    /**
+     * view single student
+     */
+    public function view($id){
+        $data = Student::find($id);
+
+        echo '<button class="close" data-dismiss="modal">&times;</button>
+                <img src="'.asset('media/student/'.$data -> photo).'" alt="" class="rounded-circle mx-auto d-block shadow mb-3" style="width: 150px;height: 150px;border: 5px solid #fff;">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Name:</strong> '.$data -> name.'</li>
+                    <li class="list-group-item"><strong>Email:</strong> '.$data -> email.'</li>
+                    <li class="list-group-item"><strong>Cell:</strong> '.$data -> cell.'</li>
+                    <li class="list-group-item"><strong>Username:</strong> '.$data -> uname.'</li>
+                    <li class="list-group-item"><strong>Age:</strong> '.$data -> age.'</li>
+                </ul>';
+    }
+
+    /**
+     * edit student
+     */
+    public function edit($id){
+        $data = Student::find($id);
+
+        echo json_encode($data);
+    }
+
+    /**
+     * update student data
+     */
+    public function update(Request $request, $id){
+        $data = Student::find($id);
+
+        if($request -> hasFile('new_photo')){
+            $file = $request -> file('new_photo');
+            $unique_name = md5(time().rand()).'.'.$file -> getClientOriginalExtension();
+            $file -> move(public_path('media/student'), $unique_name);
+
+            if(file_exists('media/student/'.$request -> old_photo)){
+                unlink('media/student/'.$request -> old_photo);
+            }
+        }else{
+            $unique_name = $request -> old_photo;
+        }
+
+        $data -> name = $request -> name;
+        $data -> email = $request -> email;
+        $data -> cell = $request -> cell;
+        $data -> uname = $request -> uname;
+        $data -> age = $request -> age;
+        $data -> photo = $unique_name;
+        $data -> update();
+    }
+
+    /**
+     * destroy student
+     */
+    public function destroy($id){
+        $data = Student::find($id);
+        $data -> delete();
+
+        if(file_exists('media/student/'.$data -> photo)){
+            unlink('media/student/'.$data -> photo);
         }
     }
 }

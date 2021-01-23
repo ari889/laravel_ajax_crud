@@ -42,6 +42,7 @@
     </div>
 	</div>
 
+{{--    add student modal --}}
     <div class="modal fade" id="student_add_modal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -96,7 +97,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <img src="{{asset('images/image.jpg')}}" alt="" class="img-fluid">
+                            <img src="#" alt="" class="img-fluid" id="student_add_image">
                             <label for="photo" class="text-secondary border rounded-sm p-2"><i class="fas fa-image"></i> Upload photo</label>
                             <input type="file" class="d-none" id="photo" name="photo">
                         </div>
@@ -109,20 +110,71 @@
         </div>
     </div>
 
-
+{{--student view modal--}}
     <div class="modal fade" id="student_show_modal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
+                <div class="modal-body" id="single_student_data">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{--    student edit modal--}}
+    <div class="modal fade" id="student_edit_modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" id="edit_single_student">
+                <div class="modal-header bg-success">
+                    <p class="mb-0 text-white font-weight-bold">Edit student</p>
+                    <button class="close" type="button" data-dismiss="modal">&times;</button>
+                </div>
                 <div class="modal-body">
-                    <button class="close" data-dismiss="modal">&times;</button>
-                    <img src="{{asset('images/image.jpg')}}" alt="" class="rounded-circle mx-auto d-block shadow mb-3" style="width: 150px;height: 150px;border: 5px solid #fff;">
-                    <ul class="list-group">
-                        <li class="list-group-item"><strong>Name:</strong> Arijit Banarjee</li>
-                        <li class="list-group-item"><strong>Email:</strong> arijitbanarjee889@gmail.com</li>
-                        <li class="list-group-item"><strong>Cell:</strong> +8801733163337</li>
-                        <li class="list-group-item"><strong>Username:</strong> ari889</li>
-                        <li class="list-group-item"><strong>Age:</strong> 25</li>
-                    </ul>
+                    <form id="student_edit_form" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="student_edit_message"></div>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="name">Your name:</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="email">Valid email:</label>
+                                    <input type="text" class="form-control" id="email" name="email" value="'.$data -> email.'">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="cell">Cell:</label>
+                                    <input type="text" class="form-control" id="cell" name="cell" value="'.$data -> cell.'">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="uname">Username:</label>
+                                    <input type="text" class="form-control" id="uname" name="uname" value="'.$data -> uname.'">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age:</label>
+                            <input type="text" class="form-control" id="age" name="age" value="'.$data -> age.'">
+                        </div>
+                        <div class="form-group">
+                            <img src="" alt="" class="img-fluid" id="photo-show">
+                            <label for="new_photo" class="text-secondary border rounded-sm p-2"><i class="fas fa-image"></i> Upload photo</label>
+                            <input type="hidden" id="old_photo" name="old_photo">
+                            <input type="file" class="d-none" id="new_photo" name="new_photo">
+                        </div>
+                </div>
+                <div class="modal-footer bg-success">
+                    <input type="submit" name="submit" value="Update" class="btn btn-light btn-sm rounded-0">
+                    </form>
                 </div>
             </div>
         </div>
