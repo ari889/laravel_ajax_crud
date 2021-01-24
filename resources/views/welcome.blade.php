@@ -13,28 +13,19 @@
         <div class="card rounded-0">
             <div class="card-body p-0">
                 <img src="{{asset('images/teacher.png')}}" alt="" class="img-fluid">
-                <div class="btn-group w-100">
-                    <a href="{{route('teacher.index')}}" class="btn btn-success rounded-0">All teachers</a>
-                    <a href="{{route('teacher.create')}}" class="btn btn-success rounded-0">Add teacher</a>
-                </div>
+                <a href="{{route('teacher.index')}}" class="btn btn-success rounded-0 d-block">All teachers</a>
             </div>
         </div>
         <div class="card rounded-0">
             <div class="card-body p-0">
                 <img src="{{asset('images/staff.png')}}" alt="" class="img-fluid">
-                <div class="btn-group w-100">
-                    <a href="{{route('staff.index')}}" class="btn btn-info rounded-0">All staff</a>
-                    <a href="{{route('staff.create')}}" class="btn btn-info rounded-0">Add staff</a>
-                </div>
+                <a href="{{route('staff.index')}}" class="btn btn-info rounded-0 d-block">All staff</a>
             </div>
         </div>
         <div class="card rounded-0">
             <div class="card-body p-0">
                 <img src="{{asset('images/student.png')}}" alt="" class="img-fluid">
-                <div class="btn-group w-100">
-                    <a href="{{route('student.index')}}" class="btn btn-danger rounded-0">All students</a>
-                    <a href="{{route('student.create')}}" class="btn btn-danger rounded-0">Add student</a>
-                </div>
+                <a href="{{route('student.index')}}" class="btn btn-danger rounded-0 d-block">All students</a>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>PHP Form Validation</title>
+	<title>Laravel Ajax crud</title>
 	<link rel="stylesheet" href="{{asset('style.css')}}">
 	<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('css/all.min.css')}}">
@@ -11,7 +11,7 @@
 	<div class="container mt-5">
         <div class="btn-group">
             <a href="#" class="btn btn-success rounded-0" data-toggle="modal" data-target="#student_add_modal">Add new student</a>
-            <a href="#" class="btn btn-dark rounded-0">Home</a>
+            <a href="{{route('ajax.index')}}" class="btn btn-dark rounded-0">Home</a>
         </div>
     <div class="card rounded-0 shadow">
       <div class="card-header">
